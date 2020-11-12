@@ -1,0 +1,47 @@
+README for HW4
+
+Partners: Ryan Ghayour & Mateo Hadeshian
+
+Architecture:
+  compress40.c contains all compression and decompression, as well as all 
+  printing, and reading bitmaps.
+  
+  40image.c contains the driver for the compression/decompression, reading
+  the file and calling compression/decompression from compress40.c depending
+  on command line arguments.
+
+Makefile Usage:
+  make 40image // makes executable of 40image.c
+
+USAGE: 
+  compression: ./40image -c [FILE] > [COMPRESSED] 
+      // prints compressed to stdout
+
+  decompression: ./40image -d [FILE] > [DECOMPRESSED]
+      // prints decompressed image to stdout
+
+Help Recieved:  We worked primarily alone, however we recieved lots of useful
+        help from TAs with bugs that would have taken much longer to 
+        solve alone, especially regarding our bitpacking and some 
+        confusion about changes in variables.
+
+What has been correctly implemented: 
+
+  -c:
+
+  - conversion from ppm to component video
+  - converting component video 4 pixels into the 5 ints a, b, c, d, pb, pr.
+  - packing the 5 int values into 32-bit words.
+  - printing the words in big endian order to stdout in a comp 40 bitmap
+    notation.
+
+  -d:
+  - readning in an array of 32-bit words from a comp 40 bitmap file.
+  - unpacking each word of that array into 5 ints: a, b, c, d, pb, pr.
+  - convert each each set of ints into 4 component-video pixels.
+  - convert from component-video form to ppm format.
+  - print image to stdout;
+
+How many hours analyzing assignment: 10
+
+How many hours solving problems: 40
